@@ -38,16 +38,16 @@ VALIDATE $? " Installing mongodb"
 
 systemctl enable mongod &>> $LOGFILE
 
-VALIDATE $? "Enabling MongoDB"
+VALIDATE $? "Enabling MongoD"
 
 systemctl start mongod &>> $LOGFILE
 
-VALIDATE $? "Starting MongoDB"
+VALIDATE $? "Starting MongoD"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.config &>> LOGFILE
 
-VALIDATE $? "Remote access to Mongodb"
+VALIDATE $? "Remote access to Mongod"
 
 systemctl restart mongod &>> $LOGFILE
 
-VALIDATE $? " Restarting Mongodb"
+VALIDATE $? " Restarting Mongod"
