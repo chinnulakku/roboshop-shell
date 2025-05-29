@@ -51,8 +51,6 @@ else
     echo -e "roboshop user already exist $Y skipping $N"
 fi
 
-VALIDATE $? "Creating roboshop user"
-
 mkdir -p /app &>> $LOGFILE
 
 VALIDATE $? " Creating app Directory"
@@ -63,7 +61,7 @@ VALIDATE $? "Downloading catalogue application"
 
 cd /app 
 
-unzip /tmp/catalogue.zip &>> $LOGFILE
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
  
 VALIDATE $? "unzipping catalogue"
 
