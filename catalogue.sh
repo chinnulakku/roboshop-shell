@@ -72,12 +72,11 @@ VALIDATE $? "catalogue daemon Reload"
 
 systemctl enable catalogue &>> $LOGFILE
 
-VALIDATE $? "Enable catalogue"
+VALIDATE $? "Enabling catalogue"
 
 systemctl start catalogue &>> $LOGFILE
 
 VALIDATE $? " Starting catalogue"
-
 cp /home/centos/roboshop-shell/mongodb.repo  /etc/yum.repos.d/mongodb.repo
 
 VALIDATE $? " copying mongodb repo"
@@ -88,7 +87,7 @@ VALIDATE $? " Install Mongodb client"
 
 mongo --host $MONGODB_HOST </app/schema/catalogue.js
 
-VALIDATE $? " Loading catalogue data into MongoDB"
+VALIDATE $? " Loading catalogue data into MongoDB"s
 
 
 
