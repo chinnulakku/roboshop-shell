@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ID=$(id -u)
-R="\e[31m"]
-G="\e[32m"]
-Y="\e[33m"]
-N="\e[0m"]
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 MONGODB_HOST=mongodb.sudhaaru676.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
@@ -45,7 +45,7 @@ useradd roboshop &>> $LOGFILE
 
 VALIDATE $? "creating roboshop user"
 
-mkdir /app &>> $LOGFILE
+mkdir -p /app &>> $LOGFILE
 
 VALIDATE $? " Creating app Directory"
 
@@ -55,16 +55,15 @@ VALIDATE $? "Downloadong catalogue application"
 
 cd /app 
 
-unzip /tmp/catalogue.zip
-
+unzip /tmp/catalogue.zip &>> $LOGFILE
+ 
 VALIDATE $? "unzipping catalogue"
 
 npm install   &>> $LOGFILE
 
-VALIDATE $? "Install Dependencies"
+VALIDATE $? "Installing Dependencies"
 
 # use absolute, because catalogue.service exists there
-
 cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catlogue.service
 
 systemctl daemon-reload &>> $LOGFILE
@@ -87,7 +86,7 @@ dnf install mongodb-org-shell -y &>> $LOGFILE
 
 VALIDATE $? " Install Mongodb client"
 
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js
+mongo --host $MONGODB_HOST </app/schema/catalogue.js
 
 VALIDATE $? " Loading catalogue data into MongoDB"
 
