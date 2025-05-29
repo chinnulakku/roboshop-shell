@@ -30,25 +30,23 @@ fi # means reverse of if, indicating condition end
 
 dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>> $ LOGFILE
 
-VALIDATE $? " Insatlling rpms"
+VALIDATE $? " Insatlling Remi release"
 
 dnf module enable redis:remi-6.2 -y &>> $ LOGFILE
 
-VALIDATE $? "Enable remi-6.2"
+VALIDATE $? "Enable redis"
 
 dnf install redis -y &>> $ LOGFILE
 
 VALIDATE $? " Installing redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf & /etc/redis/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf & /etc/redis/redis.conf &>> $ LOGFILE
 
-&>> $ LOGFILE
-
-VALIDATE $? " remote access to redis"
+VALIDATE $? " allowing remote connections"
 
 systemctl enable redis &>> LOGFILE
 
-VALIDATE $? "Enable redis"
+VALIDATE $? "Enabled redis"
 
 systemctl start redis &>> LOGFILE
 
