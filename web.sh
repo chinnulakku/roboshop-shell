@@ -34,7 +34,7 @@ dnf install nginx -y &>> $LOGFILE
 
 VALIDATE $? " Installing nginx"
 
-systemctl enable nginx &>> $LOGFILE
+systemctl enable nginx  &>> $LOGFILE
 
 VALIDATE $? "enable nginx"
 
@@ -60,7 +60,7 @@ VALIDATE $? "unzipping web"
 
 cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf &>> $LOGFILE
 
-VALIDATE $? "copied roboshop reverse proxy conf"
+VALIDATE $? "copied roboshop reverse proxy config"
 
 systemctl restart nginx &>> $LOGFILE
 
