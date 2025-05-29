@@ -45,13 +45,13 @@ useradd roboshop &>> $LOGFILE
 
 VALIDATE $? "creating roboshop user"
 
-mkdir -p /app &>> $LOGFILE
+mkdir /app &>> $LOGFILE
 
 VALIDATE $? " Creating app Directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>> $LOGFILE
 
-VALIDATE $? "Downloadong catalogue application"
+VALIDATE $? "Downloading catalogue application"
 
 cd /app 
 
@@ -64,7 +64,9 @@ npm install   &>> $LOGFILE
 VALIDATE $? "Installing Dependencies"
 
 # use absolute, because catalogue.service exists there
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catlogue.service
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
+
+VALIDATE $? "Copying catalogue service file"
 
 systemctl daemon-reload &>> $LOGFILE
 
@@ -72,18 +74,19 @@ VALIDATE $? "catalogue daemon Reload"
 
 systemctl enable catalogue &>> $LOGFILE
 
-VALIDATE $? "Enabling catalogue"
+VALIDATE $? "Enable catalogue"
 
 systemctl start catalogue &>> $LOGFILE
 
-VALIDATE $? " Starting catalogue"
+VALIDATE $? "Starting catalogue"
+
 cp /home/centos/roboshop-shell/mongodb.repo  /etc/yum.repos.d/mongodb.repo
 
 VALIDATE $? " copying mongodb repo"
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
 
-VALIDATE $? " Install Mongodb client"
+VALIDATE $? " Install MongoDB client"
 
 mongo --host $MONGODB_HOST </app/schema/catalogue.js
 
