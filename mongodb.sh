@@ -42,9 +42,9 @@ VALIDATE $? "Enabling MongoDB"
 
 systemctl start mongod &>> $LOGFILE
 
-VALIDATE $? "Starting MongoD"
+VALIDATE $? "Starting MongoD" 
 
-sed -e 's/127.0.0.1/0.0.0.0/g' /etc/mongod.config &>> $LOGFILE
+SED -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.config &>> $LOGFILE
 
 VALIDATE $? " Remote access to MongoDB"
 
