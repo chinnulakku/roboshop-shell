@@ -38,9 +38,9 @@ cp mysql.repo /etc/yum.repos.d/mysql.repo &>> $LOGFILE
 
 VALIDATE $? "Copied MySQL repo"
 
-dnf install mysql-server -y &>> $ LOGFILE
+dnf install mysql-community-server -y &>> $ LOGFILE
 
-VALIDATE $? "Install MySQL-server"
+VALIDATE $? "Install MySQL server"
 
 systemctl enable mysqld &>> $LOGFILE
 
@@ -53,6 +53,3 @@ VALIDATE $? "Starting MySQL Server"
 mysql_secure_installation --set-root-pass RoboShop@1
 
 VALIDATE $? "Setting MySQL root password"
-
-mysql -uroot -pRoboShop@1
-
