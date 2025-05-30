@@ -40,7 +40,7 @@ VALIDATE $? "Copied MySQL repo"
 
 dnf install mysql-community-server -y &>> $ LOGFILE
 
-VALIDATE $? "Installing MySQL server"
+VALIDATE $? "Install MySQL-server"
 
 systemctl enable mysqld &>> $LOGFILE
 
