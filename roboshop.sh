@@ -1,13 +1,13 @@
 #!/bin/bash
 
-    AMI=ami-0b4f379183e5706b9
-    SG_ID=sg-061ecf2f6de064124 #replace with your SG ID
-    INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
-    ZONE_ID=Z003779318P2IJXTXT1UI # replace your zone ID
-    DOMAIN_NAME="sudhaaru676.online"
+AMI=ami-0b4f379183e5706b9
+SG_ID=sg-061ecf2f6de064124 #replace with your SG ID
+INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
+ZONE_ID=Z003779318P2IJXTXT1UI # replace your zone ID
+DOMAIN_NAME="sudhaaru676.online"
 
-    for i in "${INSTANCES[@]}"
-    do
+for i in "${INSTANCES[@]}"
+do
     if [ $i == "mongodb" ] || [$i == "mysql"] || [$i == "shipping"]
     then
         INSTANCE_TYPE="t3.small"
@@ -36,4 +36,3 @@
         }
         }]
     }
-done
