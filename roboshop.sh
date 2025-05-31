@@ -19,7 +19,7 @@ do
     echo "$i:$IP_ADDRESS"
 
     #create R53 record, make sure yu delete existing record
-    aws route53 chnage-resource-record-sets \
+    aws route53 change-resource-record-sets \
     --hosted-zone-id $ZONE_ID \
     --change-batch '
     {
