@@ -2,7 +2,7 @@
 
 ami=ami-0b4f379183e5706b9
 SG_ID=sg-061ecf2f6de064124 #replace with your SG ID
-INSTANCES=("mongodb" "redis" "mysql"  "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
+INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 
 for i in "${INSTANCES[@]}"
 do
