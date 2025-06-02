@@ -23,8 +23,7 @@ do
 
 aws route53 change-resource-record-sets \
 --hosted-zone-id "$ZONE_ID" \
---change-batch "sudhaaru676.online" <<EOF
-{
+--change-batch 
     "Comment": "Creating a record set for cognito endpoint",
     "Changes": [{
         "Action": "UPSERT",
@@ -38,9 +37,4 @@ aws route53 change-resource-record-sets \
         }
     }]
 }
-EOF
-# The 'done' keyword would typically follow a 'for' or 'while' loop block.
-# Example:
-# for i in {1..5}; do
-#   # ... your aws command here ...
-# done
+done
