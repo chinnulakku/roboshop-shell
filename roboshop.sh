@@ -36,4 +36,9 @@ do
         }
     }]
 }
-done
+EOF
+# The 'done' keyword would typically follow a 'for' or 'while' loop block.
+# Example:
+# for i in {1..5}; do
+#   # ... your aws command here ...
+# done
