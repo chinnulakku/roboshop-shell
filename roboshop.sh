@@ -24,7 +24,7 @@ do
 aws route53 change-resource-record-sets \
 --hosted-zone-id "$ZONE_ID" \
 --change-batch 
-    {
+{
     "Comment": "Creating a record set for cognito endpoint",
     "Changes": [{
         "Action": "UPSERT",
