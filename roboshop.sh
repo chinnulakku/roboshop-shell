@@ -27,11 +27,11 @@ do
         ,"Changes": [{
         "Action"                   :  "UPSERT"
         ,"ResourceRecordSet"       :   {
-            "Name                  :   "'$i'.'$DOMAIN_NAME'"   
-            ,"Type"                :   "A"
-            ,"TTL"                 :    1
-            ,"ResourceRecords"     :   [{
-                "Value"            :  "'$IP_ADDRESS'"
+            "Name                   :   "'$i'.'$DOMAIN_NAME'"   
+            ,"Type"                 :   "A"
+            ,"TTL"                  :    1
+            ,"ResourceRecords"      :   [{
+                "Value"             :  "'$IP_ADDRESS'"
             }]
         }
         }]
